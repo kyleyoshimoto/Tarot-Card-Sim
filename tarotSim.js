@@ -30,7 +30,7 @@ function getRandomCard() {
             health: `In a health context, The High Priestess is generally telling you to listen to the messages your body is trying to send you about what it needs. The High Priestess can indicate that you are not being taken seriously in relation to your health concerns. Don’t allow your concerns to be ignored! The High Priestess can also symbolise fertility and hormones coming into balance and menstruation.`,
             spirituality: `The High Priestess Tarot card is a card of spirituality and wisdom. When this card appears it is a good time to connect with your inner voice and intuition and to trust your higher power. It is another great card to appear for those interested in psychic development!`
         }
-    } else if (randNum = 3) {
+    } else if (randNum == 3) {
         cardDrawn = {
             name: `The Empress`,
             meaning: `The Empress Tarot is the Major Arcana card of femininity and motherhood. It is also one of the strongest pregnancy cards in the Tarot deck. If you are a mother, you will really come into your own and find fulfilment. If you are a father, The Empress encourages you to build on your communication with your children and show them your nurturing side. Even if you are not a parent, when The Empress appears the message is the same, you should embrace your softer side, allow yourself to explore the emotions you are feeling and listen to your intuition. People will be drawn to you, especially those in need of the empathy, compassion and nurturing you are able to provide.`,
@@ -145,16 +145,12 @@ function randTopicIndex() {
     let indices = [];
     indices.push(Math.floor(Math.random() * 4))
     console.log(indices[0]);
-    let secondIndex = (Math.floor(Math.random() * 4));
-    console.log(secondIndex);
-    for (toggle = 1; toggle = 0;) {
-        if (secondIndex = indices[0]) {
-            secondIndex = Math.floor(Math.random * 4);
-        } else {
+    while (indices.length < 2) {
+        let secondIndex = Math.floor(Math.random() * 4);
+        if (!indices.includes(secondIndex)) {
             indices.push(secondIndex);
-            toggle = 0;
         }
-    };
+    }
     console.log(indices);
     return indices;
 }
@@ -162,16 +158,18 @@ function randTopicIndex() {
 function tarotReading() {
     let card = getRandomCard();
     let topics = randTopicIndex();
+    console.log(topics);
     console.log(`You drew ${card.name}\n`);
     console.log(card.meaning + "\n");
-    for (i in topics) {
-        if (topics[i] = 0) {
+    for (let i = 0; i < topics.length; i++) {
+        console.log(`${i + 1}:`);
+        if (topics[i] == 0) {
             console.log(`This card has something to say about your future love and relationships. ${card.loveAndRelationships}\n`);
-        } else if (topics[i] = 1) {
+        } else if (topics[i] == 1) {
             console.log(`${card.name} tells us about your money and career prospects. ${card.moneyAndCareer}\n`);
-        } else if (topics[i] = 2) {
+        } else if (topics[i] == 2) {
             console.log(`My reading informs me much about your future health. ${card.health}\n`);
-        } else if (topics[i] = 3) {
+        } else if (topics[i] == 3) {
             console.log(`The card you pulled lets us know of your impending spirituality. ${card.spirituality}\n`);
         }
     }
