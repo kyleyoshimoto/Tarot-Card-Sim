@@ -1,8 +1,11 @@
+// Function that returns random index from 0 to specified "max" integer.
+const getRandomIndex = (max) => Math.floor(Math.random() * max + 1);
+
 // Tarot cards meanings retrieved from https://www.thetarotguide.com/major-arcana/
 // Function that will randomly select one of the 15 tarot cards and return an object with the name and general meanings.
 function getRandomCard() {
     // Gets a random index from 0 to 14.
-    let randNum = Math.floor(Math.random() * 15);
+    let randNum = getRandomIndex(14);
     // let cardDrawn;
     // Sequence of conditionals that implements "cardDrawn" as an object with corresponding index.
     if (randNum == 0) {
@@ -148,10 +151,10 @@ function getRandomCard() {
 function randTopicIndex() {
     let indices = [];
     // Creates first random index between 0 and 3.
-    indices.push(Math.floor(Math.random() * 4))
+    indices.push(getRandomIndex(3));
     // While loop that creates a second index, checks to make sure that the indicies are equal, and adds second index to array to be returned.
     while (indices.length < 2) {
-        let secondIndex = Math.floor(Math.random() * 4);
+        let secondIndex = getRandomIndex(3);
         if (!indices.includes(secondIndex)) {
             indices.push(secondIndex);
         }
