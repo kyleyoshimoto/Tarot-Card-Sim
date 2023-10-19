@@ -1,9 +1,10 @@
 // Tarot cards meanings retrieved from https://www.thetarotguide.com/major-arcana/
 // Function that will randomly select one of the 15 tarot cards and return an object with the name and general meanings.
 function getRandomCard() {
+    // Gets a random index from 0 to 14.
     let randNum = Math.floor(Math.random() * 15);
-    console.log(randNum);
-    let cardDrawn;
+    // let cardDrawn;
+    // Sequence of conditionals that implements "cardDrawn" as an object with corresponding index.
     if (randNum == 0) {
         cardDrawn = {
             name: `The Fool`,
@@ -90,6 +91,7 @@ function getRandomCard() {
             meaning: `In a general context, The Devil Tarot card can signify depression or addiction. It can also be a sign of feeling trapped or restricted. With this Major Arcana card in your Tarot spread you may feel as though outside influences or forces beyond your control are restricting you, leaving you feeling powerless and victimised. However, this is the illusion The Devil creates. You are in control of your own destiny and are not bound by anything other than your own attitudes and behaviour. Don’t give up and don’t give away your power. You don’t have to tolerate negativity, criticism, manipulation or abuse from anyone. There are always options and there is always something positive you can do to improve your situation no matter how hopeless things may seem on the surface. Likewise be mindful of how you are treating others and make sure you are not trying to manipulate or control people in your life either. The Devil upright in your Tarot reading can also indicate obsessive, secretive or impulsive behaviour. It can be a sign that you are out of control. The Devil Tarot card is also a signifier of materialism and may show that you have become overly concerned with material things, status or power. These are not things that will make you truly fulfilled as a person so put your energy into the things that will.`,
             loveAndRelationships: `If you are in a relationship, The Devil can be a sign that you or your partner are feeling trapped. It may indicate a loss of freedom brought on by becoming too engrossed in a relationship. The Devil shows that this level of co-dependence is unhealthy. You and your partner should take a step back and try to rediscover some interests outside the relationship. It can also signify that you or your partner may be suffering from mental health issues that are affecting the relationship. If this is the case, seek the help of a professional counsellor to assist you both during this time. The Devil Tarot card can be a sign of jealousy, envy, deception, dominance, cheating and in an extremely negative context abuse, violence or sexual assault. Look to supporting cards to confirm this. If you feel trapped in a relationship because of any form of abuse, remember you can free yourself of this situation, don’t let The Devil make you feel powerless. If you are single, The Devil can indicate sex without love. You may be having unfulfilling or even dangerous sexual encounters or allowing yourself to be used by people who do not care about you because you desperately want to be loved. If that is the case, take a break from dating until you’ve built up your self-esteem. The Devil can also be an indicator of a potential relationship that may be harmful to you. This new love interest may have a drug addiction, become overly dependent on you possibly as a result of mental health issues, be deceptive or become violent or abusive. Although they may seem intriguing or exciting at first, The Devil indicates danger, so avoid letting this person into your life.`,
             moneyAndCareer: `In a career context, The Devil upright in your Tarot reading can indicate that you feel trapped in a job that you hate. Again, you are in control of your own life even if you don’t feel that way. Evaluate what you really want in your career and if a move is what you need, make it. Remember that it is a choice you are making if you decide to stay in a job you dislike. The Devil can also indicate a colleague or person in a career context who is deceptive and may be trying to sabotage you. Be careful who you trust, this person will be all smiles to your face and while simultaneously stabbing you in the back. In a financial context, The Devil indicates that money will be tight but it suggests that there is more you could be doing to help yourself. Watch your spending! It can easily get out of control with The Devil in your Tarot spread. Also, avoid gambling or any sort of risky or impulsive investments.`,
+            health: `In a health context, The Devil can indicate poor health brought about by harmful behaviour such as drug addiction, alcoholism or compulsive overeating. It is also an indicator of mental health issues such as depression, anxiety, panic attacks, bipolar, schizophrenia etc. If you feel like you have a mental health problem, please do not look to the cards to diagnose you, seek the help of a mental health professional. The Devil upright in a health context can also indicate a silent illness like high blood pressure. If you have been feeling unwell or inexplicably exhausted, go to the doctor and get a check-up. If you have a diagnosed illness, The Devil tells you not to let it define you, while you may have some restrictions be careful that you are not putting excessive limitations on yourself out of fear of exasperating your illness.`,
             spirituality: `In a spiritual context, The Devil can indicate that you have become too materialistic. Try to bring the focus back to the non-materialistic pleasures in life such as spending time with the people who make you happy or connecting to your spiritual side. It can also indicate that a lack of hope may be holding you back from moving towards the light. Like attracts like, so even in your darkest moments you should always strive to send light and love out into the world as that’s what you will attract back. Never allow darkness to take over. If you have felt overwhelmed with depression or anxiety, firstly make sure you surround yourself with a loving and supportive network of friends and let go of anybody who is overly negative or critical of you. Secondly, try some sort of energy healing to help you get rid of any negative energy you have been holding onto.`
         } 
     }  else if (randNum == 10) {
@@ -141,26 +143,29 @@ function getRandomCard() {
     return cardDrawn;
 };
 
+// Function that creates an array of two indicies that will be used to randomly give tarot card reading.
+// Simulates authenticity of each reading.
 function randTopicIndex() {
     let indices = [];
+    // Creates first random index between 0 and 3.
     indices.push(Math.floor(Math.random() * 4))
-    console.log(indices[0]);
+    // While loop that creates a second index, checks to make sure that the indicies are equal, and adds second index to array to be returned.
     while (indices.length < 2) {
         let secondIndex = Math.floor(Math.random() * 4);
         if (!indices.includes(secondIndex)) {
             indices.push(secondIndex);
         }
     }
-    console.log(indices);
     return indices;
 }
 
+// Function that simulates tarot reading with random card and meanings.
 function tarotReading() {
     let card = getRandomCard();
     let topics = randTopicIndex();
-    console.log(topics);
     console.log(`You drew ${card.name}\n`);
     console.log(card.meaning + "\n");
+    // Loop that iterates through both random indicies drawn from randTopicIndex() function and prints the corresponing meaning.
     for (let i = 0; i < topics.length; i++) {
         console.log(`${i + 1}:`);
         if (topics[i] == 0) {
